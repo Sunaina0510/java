@@ -40,7 +40,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=java-starter -Dsonar.projectName='java-starter'      
 
-      # - name: 🛠️ Build with Maven
+      # - name: Build with Maven
       #   run: mvn -B clean install
 
       # - name: Run Tests
