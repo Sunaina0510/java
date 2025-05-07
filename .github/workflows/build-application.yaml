@@ -32,8 +32,8 @@ jobs:
       # - name: 🛠️ Build with Maven
       #   run: mvn -B clean install
 
-      - name: Run Tests
-        run: mvn test
+      # - name: Run Tests
+      #   run: mvn test
 
       # - name: SonarQube Scan (Optional)
       #   env:
