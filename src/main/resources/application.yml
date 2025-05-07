@@ -42,7 +42,7 @@ springdoc:
     use-root-path: 'true'
   version: '@springdoc.version@'
 server:
-  port: ${APPLICATION_PORT}
+  port: 8080
 logging:
   level:
     root: INFO
