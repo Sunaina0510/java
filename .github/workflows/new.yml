@@ -28,6 +28,8 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
+    - name: List files in target directory
+      run: ls -al target/  # Debugging step to check if the .jar file is created          
 
     # - name: Build with Maven
     #   run: mvn -B clean install
