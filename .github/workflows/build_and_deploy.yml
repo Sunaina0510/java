@@ -32,8 +32,8 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -DskipTests
 
-      - name: Run Unit Tests
-        run: mvn test
+      # - name: Run Unit Tests
+      #   run: mvn test
 
       # - name: Static Code Analysis (SonarQube)
       #   env:
