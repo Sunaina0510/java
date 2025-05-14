@@ -69,7 +69,7 @@ jobs:
       - name: build Docker image
         run: |
          # IMAGE_NAME=$(basename $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')
-         docker build -t ghcr.io/Sunaina0510/Java/java-app:${{ github.sha }} .
+         docker build -t ghcr.io/sunaina0510/java/java-app:${{ github.sha }} .
 
 
 
