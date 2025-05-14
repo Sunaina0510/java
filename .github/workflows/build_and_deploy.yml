@@ -67,7 +67,8 @@ jobs:
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository }}/java-app:${{ github.sha }} .
+        run: docker build -t ghcr.io/${{ github.repository | toLowerCase }}/java-app:${{ github.sha }} .
+
 
       - name: Push Docker image to GHCR
         run: docker push ghcr.io/${{ github.repository }}/java-app:${{ github.sha }}
