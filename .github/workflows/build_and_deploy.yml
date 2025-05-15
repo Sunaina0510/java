@@ -37,15 +37,15 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install -DskipTests
+
+      # - name: Run Unit Tests
+      #   run: mvn test        
           
       # - name: Sonarqube analysis
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       #   run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=java-starter -Dsonar.projectName='java-starter'
-
-      # - name: Run Unit Tests
-      #   run: mvn test
 
       - name: Package Artifact
         run: mvn package -DskipTests
@@ -55,6 +55,11 @@ jobs:
         with:
           name: java-app
           path: target/*.war
+          
+      - name: Publish WAR to GitHub Packages
+        run: mvn deploy -DskipTests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Log in to GHCR
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
@@ -62,9 +67,6 @@ jobs:
       - name: Build Docker image
         run: |
          docker build -t ghcr.io/sunaina0510/java/java-app:${{ github.sha }} .
-
-
-
 
       - name: Push Docker image to GHCR
         run: docker push ghcr.io/sunaina0510/java/java-app:${{ github.sha }}
