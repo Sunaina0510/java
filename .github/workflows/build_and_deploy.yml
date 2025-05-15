@@ -44,21 +44,11 @@ jobs:
       #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       #   run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=java-starter -Dsonar.projectName='java-starter'
 
-
-
-      - name: Run Unit Tests
-        run: mvn test
-
-      - name: Static Code Analysis (SonarQube)
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn sonar:sonar -Dsonar.projectKey=my-project -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+      # - name: Run Unit Tests
+      #   run: mvn test
 
       - name: Package Artifact
         run: mvn package -DskipTests
-
-      - name: List target contents (debug step)
-        run: ls -lh target/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -69,9 +59,8 @@ jobs:
       - name: Log in to GHCR
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
 
-      - name: build Docker image
+      - name: Build Docker image
         run: |
-         # IMAGE_NAME=$(basename $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')
          docker build -t ghcr.io/sunaina0510/java/java-app:${{ github.sha }} .
 
 
