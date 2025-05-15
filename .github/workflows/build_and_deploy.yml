@@ -1,4 +1,4 @@
-name: Java CI/CD Pipeline
+name: Java Pipeline
 
 on:
   push:
@@ -77,33 +77,3 @@ jobs:
       - name: Push Docker image to GHCR
         run: docker push ghcr.io/sunaina0510/java/java-app:${{ github.sha }}
 
-  # deploy:
-  #   name: Deploy to Dev Environment
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   if: github.ref == 'refs/heads/main'
-
-  #   steps:
-  #     - name: Download Artifact
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: java-app
-
-  #     - name: Deploy to Dev Server
-  #       run: |
-  #         echo "Deploying to Dev Environment..."
-  #         # scp or use another deployment mechanism
-
-  # approve_and_deploy_prod:
-  #   name: Deploy to Production (Manual Approval)
-  #   runs-on: ubuntu-latest
-  #   needs: deploy
-  #   if: github.ref == 'refs/heads/main'
-
-  #   steps:
-  #     - name: Wait for Manual Approval
-  #       uses: hmarr/auto-approve-action@v3
-  #       with:
-  #         github-token: ${{ secrets.GITHUB_TOKEN }}
-  #     - name: Deploy to Production
-  #       run: echo "Deploying to Production..."
