@@ -58,7 +58,7 @@ jobs:
         run: mvn package -DskipTests
 
       - name: List target contents (debug step)
-        run: ls -R target/
+        run: ls -lh target/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
