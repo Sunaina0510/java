@@ -46,13 +46,13 @@ jobs:
 
 
 
-      # - name: Run Unit Tests
-      #   run: mvn test
+      - name: Run Unit Tests
+        run: mvn test
 
-      # - name: Static Code Analysis (SonarQube)
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #   run: mvn sonar:sonar -Dsonar.projectKey=my-project -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+      - name: Static Code Analysis (SonarQube)
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn sonar:sonar -Dsonar.projectKey=my-project -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
 
       - name: Package Artifact
         run: mvn package -DskipTests
