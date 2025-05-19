@@ -84,8 +84,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-         docker build -t ghcr.io/sunaina0510/java/java-app:${{ github.sha }} .
+         docker build -t ghcr.io/${{ github.repository }}/java-app:${{ github.sha }} .
 
       - name: Push Docker image to GHCR
-        run: docker push ghcr.io/sunaina0510/java/java-app:${{ github.sha }}
+        run: docker push ghcr.io/${{ github.repository }}/java-app:${{ github.sha }}
 
