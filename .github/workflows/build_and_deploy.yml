@@ -57,7 +57,7 @@ jobs:
           path: target/*.war
           
       - name: Publish WAR to GitHub Packages
-        run: mvn deploy -DskipTests
+        run: mvn deploy -DskipTests --settings .github/settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
