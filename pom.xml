@@ -14,12 +14,19 @@
 	<packaging>war</packaging>
 	<name>Springboot JWT Auth</name>
 	<description>Springboot JWT Auth</description>
-	
+	<properties>
+    <!-- Override these in CI via -Dgithub.user=... -->
+           <github.user>Sunaina0510</github.user>
+           <github.repo>java</github.repo>
+           <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+           <maven.compiler.source>17</maven.compiler.source>
+           <maven.compiler.target>17</maven.compiler.target>
+        </properties>
 	<distributionManagement>
 	    <repository>
 	      <id>github</id>
 	      <name>GitHub Packages</name>
-	      <url>https://maven.pkg.github.com/Sunaina0510/Java</url>
+	      <url>https://maven.pkg.github.com/${github.user}/${github.repo}</url>
 	    </repository>
 	</distributionManagement>
 	<properties>
